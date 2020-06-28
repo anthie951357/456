@@ -2,9 +2,10 @@ import pickle
 import gzip
 
 import numpy as np
-import winsound
 
-import tensorflow as tf
+
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 
 # Main class used to construct and train networks #
@@ -75,8 +76,6 @@ class Network(object):
 
                     # 保存MLP模型
                     saver.save(self.sess, './model/Hnn.ckpt')
-
-        winsound.Beep(600, 3000)
 
     def evaluate(self, data_set):
         cost_list = []
